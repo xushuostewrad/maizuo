@@ -15,15 +15,16 @@ const router = new VueRouter({
       path: '/',
       component: Index,
       children: [
-        { path: 'films', name: 'films', component: Film, meta: { tabNumber: 0 } },
+        { path: 'films/:filmType', name: 'films', component: Film, meta: { tabNumber: 0 } },
         { path: 'cinemas', name: 'cinemas', component: Cinema, meta: { tabNumber: 1 } },
         { path: 'sales', name: 'sales', component: Sale, meta: { tabNumber: 2 } },
         { path: 'center', name: 'center', component: Center, meta: { tabNumber: 3 } },
-        { path: '', redirect: '/films' }
+        { path: '', redirect: '/films/nowPlaying' }
 
       ]
     },
-    { path: '/city', name: 'city', component: City }
+    { path: '/city', name: 'city', component: City },
+    { path: '*', redirect: '/films/nowPlaying'}
   ]
 })
 export default router
